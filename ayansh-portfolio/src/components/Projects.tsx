@@ -66,14 +66,18 @@ export default function Projects() {
     },
   ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: index * 0.2, duration: 0.6, ease: "easeOut" },
-    }),
-  };
+ const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.2,
+      duration: 0.6,
+      ease: [0.42, 0, 0.58, 1],
+    },
+  }),
+};
 
   return (
     <section id="projects" ref={ref} className="projects-section">
