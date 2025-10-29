@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion} from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import verseImage from "/public/Verse.png";
-import verseVideo from "/public/verse.mp4"; // 🎥 Add your demo video here
+import verseVideo from "/public/verse.mp4";
 import dashboardImage from "/public/Chess.png";
 import dashboardVideo from "/public/Chess.mp4";
 import universeImage from "/public/Netflix.png";
-import universeVideo from "/public/Netflix.mp4"; // 🎥 Add your demo video here
+import universeVideo from "/public/Netflix.mp4";
 import aiImage from "/public/Zomato.png";
 import aiVideo from "/public/Zomato.mp4";
 
@@ -29,7 +29,7 @@ export default function Projects() {
       description:
         "A modern social platform where users create, share, and explore polls, images, and challenges. Built with React, Node.js, MongoDB, and real-time features.",
       image: verseImage,
-      video: verseVideo, // 🎬 Add this
+      video: verseVideo,
       tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
       demo: "https://verse-frontend.onrender.com",
       code: "https://github.com/Ayansh-Jain/VERSE",
@@ -37,17 +37,17 @@ export default function Projects() {
     {
       title: "Chess Ai",
       description:
-        "A new al UI dashboard with Google Auth, analytics, and notifications. Designed for clean data visualization and user tracking.",
+        "An AI Chess engine with alpha-beta pruning and GUI built in Python. Integrated with Streamlit for online play.",
       image: dashboardImage,
       video: dashboardVideo,
-      tech: ["Python", "Tkinter", "Alphabeta Pruning", "Streamlit"],
+      tech: ["Python", "Tkinter", "Alpha-Beta Pruning", "Streamlit"],
       demo: "https://chess-lense.streamlit.app/",
       code: "https://github.com/Ayansh-Jain/Chess-AI",
     },
     {
       title: "Netflix Clone",
       description:
-        "A full-stack web app for streaming movies online, featuring authentication, feeds, and challenge-based polls built using MERN Stack.",
+        "A full-stack web app for streaming movies online with authentication, feeds, and a clean React UI.",
       image: universeImage,
       video: universeVideo,
       tech: ["React", "Node.js", "MongoDB", "Express"],
@@ -57,7 +57,7 @@ export default function Projects() {
     {
       title: "Zomato Clone",
       description:
-        "A food delivery app clone built with React and Node.js, featuring restaurant listings, user authentication, and real-time order tracking.",
+        "A food delivery platform with restaurant listings, authentication, and live order tracking.",
       image: aiImage,
       video: aiVideo,
       tech: ["React", "Node.js", "MongoDB", "Express"],
@@ -66,18 +66,11 @@ export default function Projects() {
     },
   ];
 
- const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: index * 0.2,
-      duration: 0.6,
-      ease: [0.42, 0, 0.58, 1],
-    },
-  }),
-};
+  // ✅ Fixed variant (no function)
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <section id="projects" ref={ref} className="projects-section">
@@ -98,7 +91,11 @@ export default function Projects() {
             variants={cardVariants}
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
-            custom={index}
+            transition={{
+              delay: index * 0.2,
+              duration: 0.6,
+              ease: "easeInOut",
+            }}
             whileHover={{ y: -8, scale: 1.02 }}
           >
             <div className="project-image-wrapper">
