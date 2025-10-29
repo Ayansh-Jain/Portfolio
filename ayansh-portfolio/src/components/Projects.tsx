@@ -1,14 +1,14 @@
 import { useRef, useEffect, useState } from "react";
 import { motion} from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import verseImage from "/public/Verse.png";
-import verseVideo from "/public/verse.mp4";
-import dashboardImage from "/public/Chess.png";
-import dashboardVideo from "/public/Chess.mp4";
-import universeImage from "/public/Netflix.png";
-import universeVideo from "/public/Netflix.mp4";
-import aiImage from "/public/Zomato.png";
-import aiVideo from "/public/Zomato.mp4";
+import verseImage from "../public/Verse.png";
+import verseVideo from "../public/verse.mp4";
+import dashboardImage from "../public/Chess.png";
+import dashboardVideo from "../public/Chess.mp4";
+import universeImage from "../public/Netflix.png";
+import universeVideo from "../public/Netflix.mp4";
+import aiImage from "../public/Zomato.png";
+import aiVideo from "../public/Zomato.mp4";
 
 export default function Projects() {
   const ref = useRef<HTMLDivElement>(null);
