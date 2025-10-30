@@ -1,12 +1,19 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { ChevronDown } from "lucide-react";
-import profilePic from "../public/AyanshPfp.png"; // adjust path as needed
+import profilePic from "../assets/AyanshPfp.png"; // ✅ move to /src/assets, not /public
 
 export default function Hero() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section className="hero-section">
@@ -57,8 +64,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <button className="btn-primary">View Projects</button>
-          <button className="btn-secondary">Contact Me</button>
+          <button className="btn-primary" onClick={() => scrollToSection("projects")}>
+            View Projects
+          </button>
+          <button className="btn-secondary" onClick={() => scrollToSection("contact")}>
+            Contact Me
+          </button>
         </motion.div>
       </motion.div>
 
