@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { ChevronDown } from "lucide-react";
-import profilePic from "../assets/AyanshPfp.png"; // ✅ move to /src/assets, not /public
+import profilePic from "../public/AyanshPfp.png"; // ✅ move to /src/assets, not /public
 
 export default function Hero() {
   useEffect(() => {
