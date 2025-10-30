@@ -16,7 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero-section">
+    <section className="hero-section" id="hero">
       <motion.div
         className="hero-left"
         initial={{ x: -100, opacity: 0 }}

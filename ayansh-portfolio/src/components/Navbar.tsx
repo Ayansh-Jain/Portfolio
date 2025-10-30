@@ -25,7 +25,7 @@ export default function Navbar({ toggleTheme, isDark }: NavbarProps) {
   };
 
   const navItems = [
-    { label: "Home", id: "hero-section" },
+    { label: "Home", id: "hero" },
     { label: "About", id: "about" },
     { label: "Skills", id: "skills" },
     { label: "Projects", id: "projects" },
@@ -36,7 +36,7 @@ export default function Navbar({ toggleTheme, isDark }: NavbarProps) {
   return (
     <nav className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}>
       <div className="navbar-container">
-        <button className="logo" onClick={() => scrollToSection("home")}>
+        <button className="logo" onClick={() => scrollToSection("hero")}>
           AJ
         </button>
 
