@@ -28,10 +28,12 @@ export default function Navbar({ toggleTheme, isDark }: NavbarProps) {
     { label: "Home", id: "home" },
     { label: "About", id: "about" },
     { label: "Skills", id: "skills" },
+    { label: "Experience", id: "experience" },
     { label: "Projects", id: "projects" },
     { label: "Certificates", id: "certificates" },
     { label: "Contact", id: "contact" },
   ];
+
 
   return (
     <nav className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}>

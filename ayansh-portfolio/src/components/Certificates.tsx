@@ -9,9 +9,15 @@ const certificates = [
   },
   {
     title: "Hackathon Participation",
-    link: "#",
+    link: "https://drive.google.com/file/d/1BTnTKlj5KZB4GMzB28OTbEkfsggxVy9a/view",
     issuer: "JIIT Hackathon",
   },
+  {
+    title: "Javascript Intermediate  – HackerRank",
+    link: "https://www.hackerrank.com/certificates/80b3200ea105",
+    issuer: "HackerRank",
+
+  }
 ];
 
 export default function Certificates() {

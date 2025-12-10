@@ -8,6 +8,13 @@ export default function Hero() {
     window.scrollTo(0, 0);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="hero-section">
       <motion.div
@@ -57,8 +64,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <button className="btn-primary">View Projects</button>
-          <button className="btn-secondary">Contact Me</button>
+          <button className="btn-primary" onClick={() => scrollToSection("projects")}>
+            View Projects
+          </button>
+          <button className="btn-secondary" onClick={() => scrollToSection("contact")}>
+            Contact Me
+          </button>
         </motion.div>
       </motion.div>
 

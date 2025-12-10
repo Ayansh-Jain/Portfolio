@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import About from "../components/About";
-import Skills from "../components/Skills";
-import Projects from "../components/Projects";
-import Certificates from "../components/Certificates";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
-import ScrollToTop from "../components/ScrollToTop";
-import LoadingScreen from "../components/LoadingScreen";
-import CustomCursor from "../components/CustomCursor";
+import Navbar from "../src/components/Navbar";
+import Hero from "../src/components/Hero";
+import About from "../src/components/About";
+import Skills from "../src/components/Skills";
+import Experience from "../src/components/Experience";
+import Projects from "../src/components/Projects";
+import Certificates from "../src/components/Certificates";
+import Contact from "../src/components/Contact";
+import Footer from "../src/components/Footer";
+import ScrollToTop from "../src/components/ScrollToTop";
+import LoadingScreen from "../src/components/LoadingScreen";
+import CustomCursor from "../src/components/CustomCursor";
+
 
 interface HomeProps {
   toggleTheme: () => void;
@@ -37,6 +39,7 @@ export default function Home({ toggleTheme, isDark }: HomeProps) {
               <Hero />
               <About />
               <Skills />
+              <Experience />
               <Projects />
               <Certificates />
               <Contact />
