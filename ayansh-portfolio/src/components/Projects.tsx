@@ -87,12 +87,12 @@ export default function Projects() {
       category: "personal",
     },
     // Add company projects here with category: "company"
-     {
+    {
       title: "HomoSapien",
       description:
         "A spiritual themed Landing Page for a very famous Guruji,Shri Dev Prem Ji,to sell their online offerings",
       image: homosapiensImage,
-      
+
       tech: ["React", "Node.js", "MongoDB", "Express"],
       demo: "https://homosapiens.onrender.com/",
       code: "https://github.com/Ayansh-Jain/HOMOSAPIENS",
@@ -103,68 +103,68 @@ export default function Projects() {
       description:
         "A high-conversion business landing page built with React and deployed using GoDaddy and cPanel. Designed for lead generation with responsive layout, animations, and modern UI elements.",
       image: hemantImage,
-      
+
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://lp.hemantrise.live/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
       category: "company",
     },
-        {
+    {
       title: "Nitai Ai & Digital Empire",
       description:
         "A high-conversion business landing page for a franchise company, Nitai Ai & Digital Empire. Designed for lead generation with responsive layout, animations, and modern UI elements.",
       image: nitaiImage,
-      
+
       tech: ["React", "Node.js", "MongoDB", "Express"],
       demo: "https://aifranchise.nitaigroup.com/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
       category: "company",
     },
-     {
+    {
       title: "Bene Consulting LLP",
       description:
         "A professional business website for Consulting company,with high-end graphics and animation",
       image: beneImage,
-      
+
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://beneconsulting.co.in/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
       category: "company",
     },
-     {
+    {
       title: "Baghla Research and Analytics",
       description:
         "A high-conversion business landing page for a very famous Chartered Accountant , CA Sumedh Baghla,showcasing his consulting services",
       image: baghlImage,
-      
+
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://baghlaresearch.com/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
       category: "company",
     },
-     {
+    {
       title: "SaaS Universe",
       description:
         "A landing page for a SaaS company,to sell their online offerings",
       image: saasImage,
-      
+
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://zomato-clone-admin.vercel.app/CreateProfile",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
       category: "company",
     },
-     {
+    {
       title: "MyProfunnel",
       description:
         "A company that creates funnels for their clients to sell their products and services",
       image: profunnelImage,
-      
+
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://shrivastavaprofunnels.com/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
       category: "company",
     },
-    
+
   ];
 
   const personalProjects = projects.filter(p => p.category === "personal");
@@ -177,7 +177,7 @@ export default function Projects() {
       y: 0,
       transition: { delay: index * 0.2, duration: 0.6, ease: "easeOut" },
     }),
-  };
+  } as const;
 
   const renderProjectCard = (project: Project, index: number) => (
     <motion.div
