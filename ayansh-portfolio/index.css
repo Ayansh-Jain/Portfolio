@@ -701,7 +701,7 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -845,6 +845,12 @@ section {
   .projects-subtitle {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
   }
 
   .certificate-card,
