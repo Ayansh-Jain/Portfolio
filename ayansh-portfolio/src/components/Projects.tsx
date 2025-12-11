@@ -170,14 +170,14 @@ export default function Projects() {
   const personalProjects = projects.filter(p => p.category === "personal");
   const companyProjects = projects.filter(p => p.category === "company");
 
-  const cardVariants = {
+  const cardVariants: any = {
     hidden: { opacity: 0, y: 50 },
     visible: (index: number) => ({
       opacity: 1,
       y: 0,
       transition: { delay: index * 0.2, duration: 0.6, ease: "easeOut" },
     }),
-  } as const;
+  };
 
   const renderProjectCard = (project: Project, index: number) => (
     <motion.div
