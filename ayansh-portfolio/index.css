@@ -666,7 +666,7 @@ section {
 /* ===== PROJECTS SECTION ===== */
 .projects-section {
   padding: 6rem 1.5rem;
-  background: var(--background);
+  background: var(--background-color);
   transition: all 0.3s ease;
 }
 
@@ -674,7 +674,7 @@ section {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--foreground);
+  color: var(--foreground-color);
   margin-bottom: 3rem;
 }
 
@@ -708,14 +708,19 @@ section {
 }
 
 .project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
   border-radius: 1.2rem;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+}
+
+.project-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
 }
 
 .project-image-wrapper {
@@ -746,13 +751,14 @@ section {
 .project-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--foreground);
+  color: var(--foreground-color);
   margin-bottom: 0.75rem;
 }
 
 .project-description {
   font-size: 0.95rem;
-  color: var(--muted-foreground);
+  color: var(--foreground-color);
+  opacity: 0.7;
   line-height: 1.6;
   margin-bottom: 1rem;
   flex-grow: 1;
@@ -766,9 +772,9 @@ section {
 }
 
 .tech-stack span {
-  background: var(--primary)10;
-  border: 1px solid var(--primary);
-  color: var(--primary);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   padding: 0.3rem 0.75rem;
   border-radius: 0.5rem;
   font-size: 0.8rem;
@@ -777,6 +783,7 @@ section {
 .project-buttons {
   display: flex;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .btn-primary,
@@ -794,17 +801,19 @@ section {
 }
 
 .btn-primary {
-  background: var(--primary);
-  color: var(--primary-color);
+  background: var(--primary-color);
+  color: white;
 }
 
 .btn-primary:hover {
-  background: var(--primary-hover);
+  background: #7c3aed;
+  transform: scale(1.02);
 }
 
 .btn-outline {
-  border: 1px solid var(--primary);
+  border: 1px solid var(--primary-color);
   color: var(--primary-color);
+  background: transparent;
 }
 
 .btn-outline:hover {
@@ -827,8 +836,8 @@ section {
 }
 
 .dark .tech-stack span {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.5);
 }
 
 
@@ -836,6 +845,10 @@ section {
 /* 🌙 RESPONSIVE DESIGN */
 /* ============================= */
 @media (max-width: 768px) {
+
+  .projects-section {
+    padding: 4rem 1rem;
+  }
 
   .certificates-section h2,
   .projects-section h2 {
@@ -845,21 +858,48 @@ section {
   .projects-subtitle {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+    padding-left: 0.75rem;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 0.5rem;
+    padding: 0;
   }
 
-  .certificate-card,
   .project-card {
-    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .project-content {
+    padding: 1.25rem;
+  }
+
+  .project-image-wrapper {
+    height: 180px;
   }
 
   .project-image {
-    height: 160px;
+    height: 100%;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+  }
+
+  .project-buttons {
+    flex-direction: row;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    flex: 1;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -1172,120 +1212,161 @@ section {
 /* ============================= */
 .experience-section {
   padding: 6rem 1.5rem;
-  background: var(--background);
-  color: var(--text-primary);
+  background: var(--background-color);
+  color: var(--foreground-color);
   transition: background 0.5s ease, color 0.5s ease;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .experience-container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding-left: 2.5rem;
 }
 
 .experience-title {
   font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   text-align: center;
-  color: var(--primary-color);
+  color: var(--foreground-color);
 }
 
+/* Timeline Layout */
 .experience-timeline {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  position: relative;
+  gap: 0;
+  padding-left: 180px;
 }
 
-.experience-card {
-  background-color: var(--card-background);
-  border: 1px solid var(--card-border);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Static timeline track (background line) */
+.timeline-track {
+  position: absolute;
+  left: 160px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(139, 92, 246, 0.15);
+  border-radius: 4px;
+}
+
+/* Animated progress line */
+.timeline-progress {
+  position: absolute;
+  left: 160px;
+  top: 0;
+  width: 3px;
+  background: linear-gradient(to bottom,
+      var(--primary-color) 0%,
+      rgba(139, 92, 246, 0.8) 50%,
+      rgba(139, 92, 246, 0.4) 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+  z-index: 1;
+}
+
+/* Each experience item row */
+.experience-item {
   position: relative;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 40px;
+  padding-bottom: 3rem;
+}
+
+.experience-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Year label on the left */
+.experience-year-label {
+  position: absolute;
+  left: -180px;
+  top: 0;
+  width: 140px;
+  text-align: right;
+  padding-right: 30px;
+}
+
+.year-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  opacity: 0.9;
+  letter-spacing: 1px;
+}
+
+/* Timeline dot */
+.timeline-dot {
+  position: absolute;
+  left: -20px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow:
+    0 0 0 4px var(--background-color),
+    0 0 0 6px rgba(139, 92, 246, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Experience card */
+.experience-card {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .experience-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  box-shadow:
+    var(--shadow-md),
+    0 0 30px rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.3);
 }
 
-.experience-card::before {
-  content: '';
-  position: absolute;
-  left: -2rem;
-  top: 2rem;
-  width: 12px;
-  height: 12px;
-  background-color: var(--primary-color);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--background-color);
-}
-
-.experience-timeline::before {
-  content: '';
-  position: absolute;
-  left: -1.45rem;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--primary-color), transparent);
-}
-
+/* Card header */
 .experience-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   margin-bottom: 1.5rem;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.experience-role-section {
-  flex: 1;
-  min-width: 200px;
 }
 
 .experience-role {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--foreground-color);
   margin-bottom: 0.5rem;
 }
 
-.experience-company {
+.experience-company-duration {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--primary-color);
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.experience-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  color: var(--foreground-color);
-}
-
-.experience-duration,
-.experience-location {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
   font-size: 0.95rem;
+  color: rgba(128, 128, 128, 0.9);
 }
 
-.experience-icon {
+.experience-company {
+  color: var(--foreground-color);
+  opacity: 0.7;
+}
+
+.experience-separator {
   color: var(--primary-color);
-  font-size: 1rem;
+  opacity: 0.6;
 }
 
+.experience-duration {
+  color: var(--foreground-color);
+  opacity: 0.6;
+}
+
+/* Description */
 .experience-description {
   margin-bottom: 1.5rem;
 }
@@ -1298,21 +1379,37 @@ section {
 
 .experience-description li {
   position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.6;
+  padding-left: 1.2rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.7;
   color: var(--foreground-color);
+  opacity: 0.85;
+  font-size: 0.95rem;
 }
 
 .experience-description li::before {
-  content: '▹';
+  content: '•';
   position: absolute;
   left: 0;
   color: var(--primary-color);
   font-weight: bold;
 }
 
+/* Tech stack section */
 .experience-tech {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tech-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--foreground-color);
+  opacity: 0.9;
+}
+
+.tech-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -1320,87 +1417,217 @@ section {
 
 .tech-tag {
   background: rgba(139, 92, 246, 0.1);
-  border: 1px solid var(--primary-color);
+  border: 1px solid rgba(139, 92, 246, 0.4);
   color: var(--primary-color);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
   font-weight: 500;
   transition: all 0.3s ease;
+  cursor: default;
 }
 
 .tech-tag:hover {
   background: var(--primary-color);
   color: white;
+  border-color: var(--primary-color);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
+/* Highlight quote */
 .experience-highlight {
-  margin-top: 3rem;
+  margin-top: 4rem;
   font-style: italic;
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  background: rgba(139, 92, 246, 0.1);
+  font-size: 1.15rem;
+  color: var(--foreground-color);
+  background: rgba(139, 92, 246, 0.08);
   border-left: 4px solid var(--primary-color);
-  padding: 1.5rem;
-  border-radius: 8px;
-  backdrop-filter: blur(6px);
+  padding: 1.5rem 2rem;
+  border-radius: 0 12px 12px 0;
   text-align: center;
+  opacity: 0.9;
 }
 
-/* Dark Mode Adjustments */
-.dark .experience-card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* ===== DARK MODE ===== */
+.dark .experience-section {
+  background: var(--background-color);
 }
 
-.dark .experience-role,
-.dark .experience-description li {
+.dark .experience-title {
   color: #ffffff;
 }
 
-.dark .experience-card::before {
-  box-shadow: 0 0 0 4px #1e1e1e;
+.dark .experience-card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Responsive Design */
+.dark .experience-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.dark .experience-role {
+  color: #ffffff;
+}
+
+.dark .experience-company,
+.dark .experience-duration {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dark .experience-description li {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .timeline-dot {
+  box-shadow:
+    0 0 0 4px var(--background-color),
+    0 0 0 6px rgba(139, 92, 246, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+.dark .year-text {
+  color: var(--primary-color);
+}
+
+.dark .experience-highlight {
+  background: rgba(139, 92, 246, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 900px) {
+  .experience-timeline {
+    padding-left: 140px;
+  }
+
+  .timeline-track,
+  .timeline-progress {
+    left: 120px;
+  }
+
+  .experience-year-label {
+    left: -140px;
+    width: 100px;
+    padding-right: 20px;
+  }
+
+  .year-text {
+    font-size: 1.6rem;
+  }
+
+  .experience-item {
+    grid-template-columns: 120px 1fr;
+    gap: 30px;
+  }
+}
+
 @media (max-width: 768px) {
   .experience-section {
     padding: 4rem 1rem;
   }
 
-  .experience-container {
+  .experience-title {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .experience-timeline {
     padding-left: 0;
   }
 
-  .experience-title {
-    font-size: 2.2rem;
+  .timeline-track,
+  .timeline-progress {
+    left: 10px;
   }
 
-  .experience-timeline::before,
-  .experience-card::before {
-    display: none;
+  .experience-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 40px;
+    padding-bottom: 2rem;
+  }
+
+  .experience-year-label {
+    position: relative;
+    left: 0;
+    width: auto;
+    text-align: left;
+    padding-right: 0;
+  }
+
+  .year-text {
+    font-size: 1.4rem;
+  }
+
+  .timeline-dot {
+    left: 4px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
   }
 
   .experience-card {
     padding: 1.5rem;
-  }
-
-  .experience-header {
-    flex-direction: column;
-    gap: 1rem;
+    border-radius: 12px;
   }
 
   .experience-role {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
-  .experience-meta {
-    width: 100%;
+  .experience-description li {
+    font-size: 0.9rem;
   }
 
   .experience-highlight {
+    margin-top: 3rem;
     font-size: 1rem;
-    padding: 1.2rem;
+    padding: 1.2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-section {
+    padding: 3rem 0.75rem;
+  }
+
+  .experience-title {
+    font-size: 1.8rem;
+  }
+
+  .experience-item {
+    padding-left: 30px;
+  }
+
+  .timeline-track,
+  .timeline-progress {
+    left: 6px;
+    width: 2px;
+  }
+
+  .timeline-dot {
+    left: 0;
+    width: 10px;
+    height: 10px;
+  }
+
+  .year-text {
+    font-size: 1.2rem;
+  }
+
+  .experience-card {
+    padding: 1.25rem;
+  }
+
+  .experience-role {
+    font-size: 1.1rem;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
   }
 }

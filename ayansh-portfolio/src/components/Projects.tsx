@@ -1,21 +1,20 @@
-import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import verseImage from "/public/Verse.png";
-import verseVideo from "/public/verse.mp4"; // 🎥 Add your demo video here
-import dashboardImage from "/public/Chess.png";
-import dashboardVideo from "/public/Chess.mp4";
-import universeImage from "/public/Netflix.png";
-import nitaiImage from "/public/nitai.png";
-import hemantImage from "/public/hemant.png";
-import beneImage from "/public/bene.png";
-import baghlImage from "/public/baghla.png";
-import saasImage from "/public/saas.png";
-import profunnelImage from "/public/profunnel.png";
-import homosapiensImage from "/public/homosapien.png";
-import universeVideo from "/public/Netflix.mp4"; // 🎥 Add your demo video here
-import aiImage from "/public/Zomato.png";
-import aiVideo from "/public/Zomato.mp4";
+import verseImage from "/Verse.png";
+import verseVideo from "/verse.mp4";
+import dashboardImage from "/Chess.png";
+import dashboardVideo from "/Chess.mp4";
+import universeImage from "/Netflix.png";
+import nitaiImage from "/nitai.png";
+import hemantImage from "/hemant.png";
+import beneImage from "/bene.png";
+import baghlImage from "/baghla.png";
+import saasImage from "/saas.png";
+import profunnelImage from "/profunnel.png";
+import homosapiensImage from "/homosapien.png";
+import universeVideo from "/Netflix.mp4";
+import aiImage from "/Zomato.png";
+import aiVideo from "/Zomato.mp4";
 
 interface Project {
   title: string;
@@ -29,18 +28,6 @@ interface Project {
 }
 
 export default function Projects() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   const projects: Project[] = [
     {
       title: "Verse",
@@ -86,13 +73,11 @@ export default function Projects() {
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
       category: "personal",
     },
-    // Add company projects here with category: "company"
     {
       title: "HomoSapien",
       description:
         "A spiritual themed Landing Page for a very famous Guruji,Shri Dev Prem Ji,to sell their online offerings",
       image: homosapiensImage,
-
       tech: ["React", "Node.js", "MongoDB", "Express"],
       demo: "https://homosapiens.onrender.com/",
       code: "https://github.com/Ayansh-Jain/HOMOSAPIENS",
@@ -103,7 +88,6 @@ export default function Projects() {
       description:
         "A high-conversion business landing page built with React and deployed using GoDaddy and cPanel. Designed for lead generation with responsive layout, animations, and modern UI elements.",
       image: hemantImage,
-
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://lp.hemantrise.live/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
@@ -114,7 +98,6 @@ export default function Projects() {
       description:
         "A high-conversion business landing page for a franchise company, Nitai Ai & Digital Empire. Designed for lead generation with responsive layout, animations, and modern UI elements.",
       image: nitaiImage,
-
       tech: ["React", "Node.js", "MongoDB", "Express"],
       demo: "https://aifranchise.nitaigroup.com/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
@@ -125,7 +108,6 @@ export default function Projects() {
       description:
         "A professional business website for Consulting company,with high-end graphics and animation",
       image: beneImage,
-
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://beneconsulting.co.in/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
@@ -136,7 +118,6 @@ export default function Projects() {
       description:
         "A high-conversion business landing page for a very famous Chartered Accountant , CA Sumedh Baghla,showcasing his consulting services",
       image: baghlImage,
-
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://baghlaresearch.com/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
@@ -147,7 +128,6 @@ export default function Projects() {
       description:
         "A landing page for a SaaS company,to sell their online offerings",
       image: saasImage,
-
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://zomato-clone-admin.vercel.app/CreateProfile",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
@@ -158,35 +138,24 @@ export default function Projects() {
       description:
         "A company that creates funnels for their clients to sell their products and services",
       image: profunnelImage,
-
       tech: ["React", "Javascript", "Cpanel", "GoDaddy"],
       demo: "https://shrivastavaprofunnels.com/",
       code: "https://github.com/Ayansh-Jain/Zomato-Clone",
       category: "company",
     },
-
   ];
 
   const personalProjects = projects.filter(p => p.category === "personal");
   const companyProjects = projects.filter(p => p.category === "company");
 
-  const cardVariants: any = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: index * 0.2, duration: 0.6, ease: "easeOut" },
-    }),
-  };
-
   const renderProjectCard = (project: Project, index: number) => (
     <motion.div
-      key={index}
+      key={`${project.title}-${index}`}
       className="project-card"
-      variants={cardVariants}
-      initial="hidden"
-      animate={isVisible ? "visible" : "hidden"}
-      custom={index}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
       whileHover={{ y: -8, scale: 1.02 }}
     >
       <div className="project-image-wrapper">
@@ -218,8 +187,8 @@ export default function Projects() {
                 hovered: { opacity: 1 },
               }}
               transition={{ duration: 0.3 }}
-              onMouseEnter={(e: { currentTarget: { play: () => any; }; }) => e.currentTarget.play()}
-              onMouseLeave={(e: { currentTarget: { pause: () => any; }; }) => e.currentTarget.pause()}
+              onMouseEnter={(e: { currentTarget: { play: () => void } }) => e.currentTarget.play()}
+              onMouseLeave={(e: { currentTarget: { pause: () => void } }) => e.currentTarget.pause()}
             />
           </motion.div>
         ) : (
@@ -268,10 +237,11 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" ref={ref} className="projects-section">
+    <section id="projects" className="projects-section">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : {}}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5 }}
         className="projects-title"
       >
@@ -283,8 +253,9 @@ export default function Projects() {
         <div className="projects-subsection">
           <motion.h3
             initial={{ opacity: 0, x: -20 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="projects-subtitle"
           >
             Personal Projects
@@ -300,8 +271,9 @@ export default function Projects() {
         <div className="projects-subsection">
           <motion.h3
             initial={{ opacity: 0, x: -20 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="projects-subtitle"
           >
             Company / Real World Projects
