@@ -1,36 +1,29 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Switch, Route } from "wouter";
 import Home from "./pages/Home";
 import { Toaster } from "react-hot-toast";
 import NotFound from "./pages/not-found";
 
-function Router({ toggleTheme, isDark }: { toggleTheme: () => void; isDark: boolean }) {
+function Router() {
   return (
     <Switch>
-      <Route path="/" component={() => <Home toggleTheme={toggleTheme} isDark={isDark} />} />
+      <Route path="/" component={() => <Home />} />
       <Route component={NotFound} />
-      <Toaster position="bottom-right" toastOptions={{ duration: 3000 }} />
+      <Toaster position="bottom-right" toastOptions={{
+        duration: 3000,
+        style: { background: '#1a1a1a', color: '#fff', border: '1px solid rgba(245,158,11,0.2)' }
+      }} />
     </Switch>
   );
 }
 
 function App() {
-  const [isDark, setIsDark] = useState(() => localStorage.getItem("theme") === "dark");
-
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  }, [isDark]);
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  }, []);
 
-  const toggleTheme = () => {
-    setIsDark(prev => !prev);
-  };
-
-  return <Router toggleTheme={toggleTheme} isDark={isDark} />;
+  return <Router />;
 }
 
 export default App;

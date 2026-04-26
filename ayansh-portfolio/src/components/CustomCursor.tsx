@@ -35,32 +35,36 @@ export default function CustomCursor() {
 
   return (
     <div className="custom-cursor">
-  <motion.div
-    className="custom-cursor-dot"
-    animate={{
-      x: mousePosition.x - 6,
-      y: mousePosition.y - 6,
-      scale: isHovering ? 1.5 : 1,
-    }}
-    transition={{
-      type: "spring",
-      stiffness: 500,
-      damping: 28,
-    }}
-  />
-  <motion.div
-    className="custom-cursor-ring"
-    animate={{
-      x: mousePosition.x - 16,
-      y: mousePosition.y - 16,
-      scale: isHovering ? 2 : 1,
-    }}
-    transition={{
-      type: "spring",
-      stiffness: 150,
-      damping: 15,
-    }}
-  />
-</div>
+      <motion.div
+        className="custom-cursor-dot"
+        animate={{
+          x: mousePosition.x - 4,
+          y: mousePosition.y - 4,
+          scale: isHovering ? 0 : 1,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 1000,
+          damping: 50,
+          mass: 0.1
+        }}
+      />
+      <motion.div
+        className="custom-cursor-ring"
+        animate={{
+          x: mousePosition.x - 20,
+          y: mousePosition.y - 20,
+          scale: isHovering ? 1.5 : 1,
+          borderColor: isHovering ? "rgba(245, 158, 11, 0.8)" : "rgba(245, 158, 11, 0.4)",
+          backgroundColor: isHovering ? "rgba(245, 158, 11, 0.1)" : "rgba(245, 158, 11, 0)",
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 250,
+          damping: 25,
+          mass: 0.5
+        }}
+      />
+    </div>
   );
 }

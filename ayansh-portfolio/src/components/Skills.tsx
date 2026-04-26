@@ -1,4 +1,3 @@
-import { useRef, useEffect, useState } from "react";
 import {
   SiReact,
   SiJavascript,
@@ -10,62 +9,83 @@ import {
   SiPython,
   SiCplusplus,
   SiTypescript
-  
 } from "react-icons/si";
+import AnimatedSection from "./ui/AnimatedSection";
 
-const skills = [
-  { name: "React", icon: SiReact, color: "#61DAFB" },
-  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-  { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
-  { name: "CSS3", icon: SiCss3, color: "#1572B6" },
-  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-  { name: "Git", icon: SiGit, color: "#F05032" },
-  { name: "Python", icon: SiPython, color: "#3776AB" },
-  { name: "C Programming", icon: SiCplusplus, color: "#1b477aff" },
+const skillCategories = [
+  {
+    title: "FRONTEND ECOSYSTEM",
+    skills: [
+      { name: "REACT", icon: SiReact },
+      { name: "TYPESCRIPT", icon: SiTypescript },
+      { name: "JAVASCRIPT", icon: SiJavascript },
+      { name: "HTML5", icon: SiHtml5 },
+      { name: "CSS3", icon: SiCss3 },
+    ]
+  },
+  {
+    title: "BACKEND & DATA",
+    skills: [
+      { name: "NODE.JS", icon: SiNodedotjs },
+      { name: "PYTHON", icon: SiPython },
+      { name: "MONGODB", icon: SiMongodb },
+    ]
+  },
+  {
+    title: "CORE SYSTEMS",
+    skills: [
+      { name: "C++ / C", icon: SiCplusplus },
+      { name: "GIT", icon: SiGit },
+    ]
+  }
 ];
 
 export default function Skills() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      id="skills"
-      className={`skills-section ${isVisible ? "fade-in" : ""}`}
-      ref={ref}
-    >
-      <h2 className="skills-title">Skills & Technologies</h2>
-      <div className="skills-grid">
-        {skills.map((skill, index) => {
-          const Icon = skill.icon;
-          return (
-            <div
-              key={skill.name}
-              className="skill-card"
-              style={{
-                transitionDelay: `${index * 0.1}s`,
-                "--icon-color": skill.color,
-              } as React.CSSProperties}
-            >
-              <div className="skill-icon">
-                <Icon />
-              </div>
-              <p>{skill.name}</p>
-            </div>
-          );
-        })}
+    <section id="skills" className="relative w-full bg-[#0A0A0A] py-32 px-4 md:px-10">
+      
+      {/* Title */}
+      <div className="max-w-7xl mx-auto mb-20">
+        <h2 className="text-[12vw] md:text-[8vw] leading-[0.8] font-black uppercase tracking-tighter flex flex-col md:flex-row md:gap-8 items-start md:items-end">
+          <div className="text-white">Tech</div>
+          <div className="text-outline">ARSENAL</div>
+        </h2>
+        <div className="flex items-center gap-4 mt-8">
+          <div className="w-12 h-[2px] bg-[#E67E22]" />
+          <span className="text-white/60 font-mono text-sm uppercase tracking-widest">Tech stack I've worked with...</span>
+        </div>
       </div>
+
+      {/* Grid */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {skillCategories.map((category, idx) => (
+          <div 
+            key={category.title}
+            className="bg-[#111111] border border-white/5 rounded-2xl p-8 hover:border-[#E67E22]/30 transition-colors"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-2 h-2 rounded-full bg-[#E67E22]" />
+              <h3 className="text-white font-mono text-sm tracking-widest uppercase">{category.title}</h3>
+            </div>
+            
+            <div className="flex flex-wrap gap-3">
+              {category.skills.map((skill) => {
+                const Icon = skill.icon;
+                return (
+                  <div 
+                    key={skill.name}
+                    className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-md px-4 py-2 transition-colors cursor-default"
+                  >
+                    <Icon className="text-white/70 w-4 h-4" />
+                    <span className="text-white text-xs font-bold tracking-wider">{skill.name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+      
     </section>
   );
 }
