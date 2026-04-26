@@ -59,7 +59,9 @@ export default function Navbar() {
             </button>
           ))}
           <a 
-            href="#resume" 
+            href="https://drive.google.com/file/d/13Bvkvwax1Q3IcUJZrBTCsr2pJOKQvQAk/view?usp=sharing" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white/70 hover:text-white px-5 py-2 rounded-full text-sm font-medium tracking-wide transition-colors hover:bg-white/5"
           >
             Resume
@@ -89,7 +91,9 @@ export default function Navbar() {
           </button>
         ))}
         <a 
-          href="#resume" 
+          href="https://drive.google.com/file/d/13Bvkvwax1Q3IcUJZrBTCsr2pJOKQvQAk/view?usp=sharing" 
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => setIsMobileMenuOpen(false)}
           className="text-white/70 hover:text-[#E67E22] text-3xl font-bold uppercase tracking-widest transition-colors"
         >

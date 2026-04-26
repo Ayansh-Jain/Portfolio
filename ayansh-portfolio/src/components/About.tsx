@@ -46,7 +46,9 @@ export default function About() {
             </p>
             
             <a 
-              href="#resume" 
+              href="https://drive.google.com/file/d/13Bvkvwax1Q3IcUJZrBTCsr2pJOKQvQAk/view?usp=sharing" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-[#E67E22] transition-colors group"
             >
               My Resume 
