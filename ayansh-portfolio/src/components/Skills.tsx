@@ -10,7 +10,6 @@ import {
   SiCplusplus,
   SiTypescript
 } from "react-icons/si";
-import AnimatedSection from "./ui/AnimatedSection";
 
 const skillCategories = [
   {
@@ -58,7 +57,7 @@ export default function Skills() {
 
       {/* Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skillCategories.map((category, idx) => (
+        {skillCategories.map((category) => (
           <div 
             key={category.title}
             className="bg-[#111111] border border-white/5 rounded-2xl p-8 hover:border-[#E67E22]/30 transition-colors"

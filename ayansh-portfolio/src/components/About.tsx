@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import AnimatedSection from "./ui/AnimatedSection";
 import profilePic from "/AyanshPfp.png";
 
 export default function About() {

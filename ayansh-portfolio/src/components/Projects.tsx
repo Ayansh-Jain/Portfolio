@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { ExternalLink, Github, ChevronRight } from "lucide-react";
 import verseImage from "/Verse.png";
 import verseVideo from "/verse.mp4";
@@ -9,9 +9,6 @@ import universeImage from "/Netflix.png";
 import nitaiImage from "/nitai.png";
 import hemantImage from "/hemant.png";
 import beneImage from "/bene.png";
-import baghlImage from "/baghla.png";
-import saasImage from "/saas.png";
-import profunnelImage from "/profunnel.png";
 import homosapiensImage from "/homosapien.png";
 import universeVideo from "/Netflix.mp4";
 import aiImage from "/Zomato.png";

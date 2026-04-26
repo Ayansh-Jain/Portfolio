@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { Mail, Github, Linkedin, Send } from "lucide-react";
 import toast from "react-hot-toast";
