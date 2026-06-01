@@ -1,8 +1,9 @@
 import profilePic from "/AyanshPfp.png";
+import CardSection from "./ui/CardSection";
 
 export default function About() {
   return (
-    <section id="about" className="relative w-full">
+    <CardSection id="about" className="relative w-full">
       {/* Ticker Tape */}
       <div className="w-full bg-[#E67E22] overflow-hidden py-3 flex border-y border-black relative z-20">
         <div className="flex animate-[scroll_20s_linear_infinite] whitespace-nowrap text-black font-black uppercase text-xl md:text-2xl tracking-widest">
@@ -46,7 +47,7 @@ export default function About() {
             </p>
             
             <a 
-              href="https://drive.google.com/file/d/13Bvkvwax1Q3IcUJZrBTCsr2pJOKQvQAk/view?usp=sharing" 
+              href="https://drive.google.com/file/d/1DTqOhSZT4Po4BR4ciknSXFNdObTYr1E1/view?usp=sharing" 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-[#E67E22] transition-colors group"
@@ -100,6 +101,6 @@ export default function About() {
         </div>
 
       </div>
-    </section>
+    </CardSection>
   );
 }

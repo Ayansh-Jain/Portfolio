@@ -83,6 +83,14 @@ section { padding: 100px 0; position: relative; }
   background: var(--bg-card-hover);
 }
 
+/* Card Section (card-on-card scroll feel) */
+.card-section {
+  position: relative;
+  will-change: transform, box-shadow;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+}
+
+
 /* Magnetic Button */
 .magnetic-btn {
   padding: 14px 36px; border-radius: 12px; font-weight: 600; font-size: 1rem;

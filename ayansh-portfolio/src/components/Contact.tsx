@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mail, Github, Linkedin, Send } from "lucide-react";
 import toast from "react-hot-toast";
+import CardSection from "./ui/CardSection";
 
 export default function Contact() {
   const [isSending, setIsSending] = useState(false);
@@ -42,7 +43,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative w-full bg-[#0A0A0A] py-32 px-4 md:px-10 border-t border-white/10">
+    <CardSection id="contact" className="relative w-full bg-[#0A0A0A] py-32 px-4 md:px-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
         
         {/* Left Side: Typography */}
@@ -131,6 +132,6 @@ export default function Contact() {
         </div>
 
       </div>
-    </section>
+    </CardSection>
   );
 }

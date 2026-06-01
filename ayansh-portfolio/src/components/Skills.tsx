@@ -8,8 +8,20 @@ import {
   SiGit,
   SiPython,
   SiCplusplus,
-  SiTypescript
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiVite,
+  SiRedux,
+  SiExpress,
+  SiPostgresql,
+  SiDocker,
+  SiAmazon,
+  SiFirebase,
+  SiGraphql,
+  SiJest
 } from "react-icons/si";
+import CardSection from "./ui/CardSection";
 
 const skillCategories = [
   {
@@ -20,28 +32,44 @@ const skillCategories = [
       { name: "JAVASCRIPT", icon: SiJavascript },
       { name: "HTML5", icon: SiHtml5 },
       { name: "CSS3", icon: SiCss3 },
+      { name: "NEXT.JS", icon: SiNextdotjs },
+      { name: "TAILWIND", icon: SiTailwindcss },
+      { name: "VITE", icon: SiVite },
+      { name: "REDUX", icon: SiRedux },
     ]
   },
   {
     title: "BACKEND & DATA",
     skills: [
       { name: "NODE.JS", icon: SiNodedotjs },
+      { name: "EXPRESS", icon: SiExpress },
       { name: "PYTHON", icon: SiPython },
       { name: "MONGODB", icon: SiMongodb },
+      { name: "POSTGRESQL", icon: SiPostgresql },
+      { name: "GRAPHQL", icon: SiGraphql },
+    ]
+  },
+  {
+    title: "CLOUD & DEVTOOLS",
+    skills: [
+      { name: "DOCKER", icon: SiDocker },
+      { name: "AWS", icon: SiAmazon },
+      { name: "FIREBASE", icon: SiFirebase },
+      { name: "GIT", icon: SiGit },
+      { name: "JEST", icon: SiJest },
     ]
   },
   {
     title: "CORE SYSTEMS",
     skills: [
       { name: "C++ / C", icon: SiCplusplus },
-      { name: "GIT", icon: SiGit },
     ]
   }
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative w-full bg-[#0A0A0A] py-32 px-4 md:px-10">
+    <CardSection id="skills" className="relative w-full bg-[#0A0A0A] py-32 px-4 md:px-10">
       
       {/* Title */}
       <div className="max-w-7xl mx-auto mb-20">
@@ -85,6 +113,6 @@ export default function Skills() {
         ))}
       </div>
       
-    </section>
+    </CardSection>
   );
 }
